@@ -1,7 +1,7 @@
-# Screenshots — Manifest
+# Screenshots — Visual Evidence
 
-> Screenshots are the **visual-first** evidence behind the blog.
-> Capture each item, save as `docs/screenshots/screenshot-NN-<name>.png`, and tick it off.
+> Screenshots are the **visual-first** evidence used when writing/polishing the blog.
+> Capture each item, save as `screenshots/<meaningful-name>.png`, and tick it off.
 > Captured evidence > claims. If a screenshot doesn't exist, the blog doesn't claim it.
 
 ## Capture checklist
@@ -25,3 +25,4 @@
 
 - One screenshot, one claim. Name = what it shows.
 - If it can't be captured (no Docker on this machine, etc.), mark `N/A` and say why — never fake it.
+- Verify this manifest against the actual PNGs before writing the blog.
