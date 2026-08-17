@@ -62,7 +62,7 @@ A production-grade WebSocket server — `websocket-production-boilerplate` — i
 
 ## Project Structure
 
-![Project Structure](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/screenshot-02-tests-passing.png)
+![Project Structure](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png)
 
 ```
 websocket-production-boilerplate/
@@ -390,7 +390,7 @@ That's production WebSocket engineering. The happy path is easy. The failure pat
 
 **Like this post?** Star the repo and try it yourself:
 
-![Repo Tree](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/screenshot-02-tests-passing.png)
+![Repo Tree](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png)
 
 ```bash
 git clone https://github.com/your-username/websocket-production-boilerplate.git
