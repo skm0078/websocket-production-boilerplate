@@ -393,7 +393,7 @@ That's production WebSocket engineering. The happy path is easy. The failure pat
 ![Repo Tree](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/tests-passing.png)
 
 ```bash
-git clone https://github.com/your-username/websocket-production-boilerplate.git
+git clone https://github.com/skm0078/websocket-production-boilerplate.git
 cd websocket-production-boilerplate
 npm ci && npm run typecheck && npm test
 docker compose up -d --build
