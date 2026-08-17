@@ -4,7 +4,7 @@ published: false
 description: "WebSocket tutorials stop at 'it works on localhost.' Real production systems need heartbeats, acks, backoff with jitter, rate limits, auth, Redis-backed rooms, metrics, and graceful shutdown. Here's the full journey."
 tags: websocket, nodejs, typescript, backend
 canonical_url: null
-cover_image: https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png
+cover_image: https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/tests-passing.png
 ---
 
 > **Status:** Draft ready · screenshots embedded (GitHub raw URLs)
@@ -13,7 +13,7 @@ cover_image: https://raw.githubusercontent.com/skm0078/websocket-production-boil
 
 ## The Story: Telos Boss's First Real Users
 
-![Metrics Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-06-metrics-endpoint.png)
+![Metrics Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/metrics-endpoint.png)
 
 Telos Boss is the CTO of a six-person startup. Their live-auction platform has been in beta for three months, and tonight is the first big public auction: 5,000 registered users, one antique vase, and a countdown timer that everyone can see.
 
@@ -31,7 +31,7 @@ Over the next few minutes, Telos Boss and her team rebuild the real-time layer p
 
 ## What We're Building
 
-![Typecheck Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-03-typecheck-passing.png)
+![Typecheck Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/typecheck-passing.png)
 
 A production-grade WebSocket server — `websocket-production-boilerplate` — in Node.js 20 + TypeScript, with:
 
@@ -48,7 +48,7 @@ A production-grade WebSocket server — `websocket-production-boilerplate` — i
 
 ## The Stack
 
-![Docker Compose Up](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-04-docker-compose-up.png)
+![Docker Compose Up](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/docker-compose-up.png)
 
 | Layer | Choice | Why |
 |---|---|---|
@@ -62,7 +62,7 @@ A production-grade WebSocket server — `websocket-production-boilerplate` — i
 
 ## Project Structure
 
-![Project Structure](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png)
+![Project Structure](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/tests-passing.png)
 
 ```
 websocket-production-boilerplate/
@@ -85,7 +85,7 @@ websocket-production-boilerplate/
 
 ## Phase 1 — The Zombie Detector (Heartbeat)
 
-![Tests Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png)
+![Tests Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/tests-passing.png)
 
 The first thing Telos Boss fixes is the 4,000 zombies.
 
@@ -124,7 +124,7 @@ private checkHeartbeats(): void {
 
 ## Phase 2 — The Envelope: Turning Fire-and-Forget Into Request-Response
 
-![Typecheck Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-03-typecheck-passing.png)
+![Typecheck Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/typecheck-passing.png)
 
 Raw `{ type, payload }` messages are fine until something goes wrong — and then you have nothing to point at.
 
@@ -162,7 +162,7 @@ requestResponse(connection, message, timeoutMs = this.opts.ackTimeoutMs): Promis
 
 ## Phase 3 — The Reconnect Dance: Backoff, Jitter, and the Queue
 
-![Docker Compose Up](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-04-docker-compose-up.png)
+![Docker Compose Up](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/docker-compose-up.png)
 
 Telos Boss's users hammered refresh because the client just gave up. The new client doesn't give up — it dances.
 
@@ -200,7 +200,7 @@ send(data: unknown): boolean {
 
 ## Mid-Way Summary
 
-![Health Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-05-health-endpoint.png)
+![Health Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/health-endpoint.png)
 
 Three things you know now that you didn't ten minutes ago:
 
@@ -212,7 +212,7 @@ The next three phases protect the server from *itself*: rooms that scale, limits
 
 ## Phase 4 — Rooms That Scale: Redis Pub/Sub
 
-![Health Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-05-health-endpoint.png)
+![Health Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/health-endpoint.png)
 
 Single-instance rooms are a `Map<room, Set<connection>>`. The moment Telos Boss's auction gets two instances, the map lies: instance A doesn't know what instance B's clients joined.
 
@@ -238,7 +238,7 @@ async subscribeToRoom(room: string, connectionId: string): Promise<void> {
 
 ## Phase 5 — The Three Dials: Rate Limiting
 
-![Metrics Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-06-metrics-endpoint.png)
+![Metrics Endpoint](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/metrics-endpoint.png)
 
 A fast client loop (or a bot) can out-shout everyone. Three dials:
 
@@ -262,7 +262,7 @@ if (!this.opts.messageRateLimiter.allow(connection.id)) {
 
 ## Phase 6 — The Walls: Security
 
-![Wscat Connect](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-07-wscat-connect.png)
+![Wscat Connect](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/wscat-publish-subscribe.png)
 
 Four walls, cheapest first:
 
@@ -276,7 +276,7 @@ Four walls, cheapest first:
 
 ## Phase 7 — The Boring Parts: Observability, Tests, Deployment
 
-![Publish Subscribe](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-08-publish-subscribe.png)
+![Publish Subscribe](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/wscat-publish-subscribe.png)
 
 **Observability:**
 - JSON logs, one line per event: `{ timestamp, level, service, instance, message, ...context }`. Grep-able, shippable.
@@ -293,7 +293,7 @@ Four walls, cheapest first:
 
 ## Production Readiness Checklist
 
-![Reconnect Demo](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-09-reconnect-demo.png)
+![Reconnect Demo](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/client-reconnect-backoff.png)
 
 **Before you deploy a WebSocket server, tick every box:**
 
@@ -315,7 +315,7 @@ Four walls, cheapest first:
 
 ## Caveats — Where This Design Bites
 
-![Rate Limit Close](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-10-rate-limit-close.png)
+![Rate Limit Close](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/rate-limit-close-4002.png)
 
 1. **Proxies are silent killers.** nginx's default `proxy_read_timeout` is 60s — *shorter* than our 75s zombie window. Set `proxy_read_timeout 300s` and `proxy_buffering off`, or your load balancer kills your heartbeats before your server does.
 2. **Redis is a single point of failure** in this design. It dies → cross-instance rooms die. Production needs Sentinel/Cluster, or Redis Streams for durability.
@@ -328,7 +328,7 @@ Four walls, cheapest first:
 
 ## FAQ
 
-![Auth Reject](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-11-auth-reject.png)
+![Auth Reject](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/auth-reject-4001.png)
 
 **Q: Why not just rely on TCP keepalive?** A: It's minutes-to-hours granularity and middleboxes often filter it. App-level ping/pong is fast and observable.
 
@@ -342,7 +342,7 @@ Four walls, cheapest first:
 
 ## Interview Prep — The Same Ideas, The Other Way Around
 
-![Tests Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png)
+![Tests Passing](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/tests-passing.png)
 
 This section doubles as interview practice. The full Q&A bank (with answers) lives in `docs/LEARNINGS.md` — here are the highlights:
 
@@ -359,7 +359,7 @@ This section doubles as interview practice. The full Q&A bank (with answers) liv
 
 ## The Closing Story
 
-![Browser Console](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-12-browser-console.png)
+![Browser Console](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/browser-client-session.png)
 
 Telos Boss's team shipped the rebuild on a Tuesday. The next auction — a vintage typewriter, 2,000 bidders — ran for 40 minutes with **zero pager alerts**. The dashboard showed something the team had never seen: a flat memory line. Clean green metrics. A hundred zombies terminated in the first minute by heartbeats that actually checked.
 
@@ -390,7 +390,7 @@ That's production WebSocket engineering. The happy path is easy. The failure pat
 
 **Like this post?** Star the repo and try it yourself:
 
-![Repo Tree](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/docs/screenshots/screenshot-02-tests-passing.png)
+![Repo Tree](https://raw.githubusercontent.com/skm0078/websocket-production-boilerplate/master/screenshots/tests-passing.png)
 
 ```bash
 git clone https://github.com/your-username/websocket-production-boilerplate.git
