@@ -1,0 +1,39 @@
+{
+  "outputDir": "evidence",
+  "captures": [
+    {
+      "name": "tests-passing",
+      "mode": "exec",
+      "command": "npm test",
+      "dependsOn": [
+        "src/**",
+        "tests/**",
+        "package.json"
+      ],
+      "requiresDocker": false,
+      "tier": "cheap"
+    },
+    {
+      "name": "typecheck-passing",
+      "mode": "exec",
+      "command": "npm run typecheck",
+      "dependsOn": [
+        "src/**",
+        "tsconfig.json"
+      ],
+      "requiresDocker": false,
+      "tier": "cheap"
+    },
+    {
+      "name": "docker-compose-up",
+      "mode": "exec",
+      "command": "docker compose up -d --build && docker compose ps",
+      "dependsOn": [
+        "docker-compose.yml",
+        "Dockerfile"
+      ],
+      "requiresDocker": true,
+      "tier": "cheap"
+    }
+  ]
+}
