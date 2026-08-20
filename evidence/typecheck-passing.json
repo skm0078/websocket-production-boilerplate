@@ -2,9 +2,9 @@
   "name": "typecheck-passing",
   "command": "npm run typecheck",
   "exitCode": 0,
-  "durationMs": 2295,
-  "capturedAt": "2026-08-20T22:23:22.366Z",
-  "gitSha": "3b7ca87",
+  "durationMs": 2564,
+  "capturedAt": "2026-08-20T22:36:19.726Z",
+  "gitSha": "cbf4d50",
   "platform": "win32/x64",
   "dependsOn": [
     "src/**",
