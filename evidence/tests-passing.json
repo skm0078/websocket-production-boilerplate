@@ -1,0 +1,18 @@
+{
+  "name": "tests-passing",
+  "command": "npm test",
+  "exitCode": 0,
+  "durationMs": 5157,
+  "capturedAt": "2026-08-20T22:23:19.621Z",
+  "gitSha": "3b7ca87",
+  "platform": "win32/x64",
+  "dependsOn": [
+    "src/**",
+    "tests/**",
+    "package.json"
+  ],
+  "tier": "cheap",
+  "verifiedInCI": false,
+  "toolVersion": "0.1.0",
+  "rawOutput": "\n> websocket-production-boilerplate@1.0.0 test\n> jest\n\n\u001b[0m\u001b[7m\u001b[1m\u001b[32m PASS \u001b[39m\u001b[22m\u001b[27m\u001b[0m \u001b[2mtests/\u001b[22m\u001b[1mrate-limit.test.ts\u001b[22m\n\u001b[0m\u001b[7m\u001b[1m\u001b[32m PASS \u001b[39m\u001b[22m\u001b[27m\u001b[0m \u001b[2mtests/\u001b[22m\u001b[1mrooms.test.ts\u001b[22m\n\u001b[0m\u001b[7m\u001b[1m\u001b[32m PASS \u001b[39m\u001b[22m\u001b[27m\u001b[0m \u001b[2mtests/\u001b[22m\u001b[1mconnection.test.ts\u001b[22m\n\u001b[0m\u001b[7m\u001b[1m\u001b[32m PASS \u001b[39m\u001b[22m\u001b[27m\u001b[0m \u001b[2mtests/\u001b[22m\u001b[1mmetrics.test.ts\u001b[22m\n\u001b[0m\u001b[7m\u001b[1m\u001b[32m PASS \u001b[39m\u001b[22m\u001b[27m\u001b[0m \u001b[2mtests/\u001b[22m\u001b[1mserver.test.ts\u001b[22m\n\n\u001b[1mTest Suites: \u001b[22m\u001b[1m\u001b[32m5 passed\u001b[39m\u001b[22m, 5 total\n\u001b[1mTests:       \u001b[22m\u001b[1m\u001b[32m30 passed\u001b[39m\u001b[22m, 30 total\n\u001b[1mSnapshots:   \u001b[22m0 total\n\u001b[1mTime:\u001b[22m        4.238 s, estimated 5 s\n\u001b[2mRan all test suites\u001b[22m\u001b[2m.\u001b[22m\n"
+}

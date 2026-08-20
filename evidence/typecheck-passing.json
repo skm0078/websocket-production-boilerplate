@@ -1,0 +1,17 @@
+{
+  "name": "typecheck-passing",
+  "command": "npm run typecheck",
+  "exitCode": 0,
+  "durationMs": 2295,
+  "capturedAt": "2026-08-20T22:23:22.366Z",
+  "gitSha": "3b7ca87",
+  "platform": "win32/x64",
+  "dependsOn": [
+    "src/**",
+    "tsconfig.json"
+  ],
+  "tier": "cheap",
+  "verifiedInCI": false,
+  "toolVersion": "0.1.0",
+  "rawOutput": "\n> websocket-production-boilerplate@1.0.0 typecheck\n> tsc --noEmit\n\n"
+}
