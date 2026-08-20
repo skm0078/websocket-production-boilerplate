@@ -113,4 +113,3 @@ main().catch((err: Error) => {
   process.stderr.write(`FATAL: ${err.stack ?? err.message}\n`);
   process.exit(1);
 });
-// staleness probe
