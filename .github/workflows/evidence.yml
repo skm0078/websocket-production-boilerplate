@@ -22,8 +22,8 @@ jobs:
 
       - name: Build the evidence tool
         run: |
-          git clone --depth 1 https://github.com/skm0078/engine.git /tmp/engine
-          cd /tmp/engine/evidence && npm ci && npm run build
+          git clone --depth 1 https://github.com/skm0078/evidence-capture.git /tmp/evidence
+          cd /tmp/evidence && npm ci && npm run build
 
       # Captures marked requiresDocker are skipped here and keep
       # verifiedInCI:false in their manifest and footer. Being visible about
@@ -31,4 +31,4 @@ jobs:
       # everything was verified would be a smaller version of the problem it
       # exists to solve.
       - name: Verify evidence is not stale
-        run: node /tmp/engine/evidence/dist/cli.js verify --ci-only
+        run: node /tmp/evidence/dist/cli.js verify --ci-only
