@@ -2,8 +2,18 @@ services:
   redis:
     image: redis:7-alpine
     command: ["redis-server", "--appendonly", "yes"]
+    # Bound to 127.0.0.1, not 0.0.0.0. A bare "6379:6379" publishes Redis to
+    # every interface, and Docker writes iptables rules that are traversed
+    # before ufw's - so a host firewall saying "deny incoming" does not stop it.
+    # Redis ships with no password by default, which makes that a full host
+    # compromise vector rather than an inconvenience.
+    #
+    # The app itself does not need this at all; it reaches Redis at
+    # redis://redis:6379 over the compose network. The publish exists only so
+    # `npm run dev` on the host can use this container. REDIS_PORT lets you move
+    # it when 6379 is already taken locally.
     ports:
-      - "6379:6379"
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
     volumes:
       - redis-data:/data
     healthcheck:
