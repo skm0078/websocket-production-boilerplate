@@ -1,0 +1,34 @@
+name: Evidence
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      # Staleness compares against the SHA recorded at capture time, so the full
+      # history has to be present. A shallow clone makes every capture look
+      # stale, the check goes permanently red, and a permanently red check gets
+      # switched off - which is worse than no check, because it looks green
+      # from a distance.
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Build the evidence tool
+        run: |
+          git clone --depth 1 https://github.com/skm0078/engine.git /tmp/engine
+          cd /tmp/engine/evidence && npm ci && npm run build
+
+      # Captures marked requiresDocker are skipped here and keep
+      # verifiedInCI:false in their manifest and footer. Being visible about
+      # what CI did not check is the point - a tool that quietly implied
+      # everything was verified would be a smaller version of the problem it
+      # exists to solve.
+      - name: Verify evidence is not stale
+        run: node /tmp/engine/evidence/dist/cli.js verify --ci-only
