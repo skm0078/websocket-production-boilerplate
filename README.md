@@ -130,4 +130,4 @@ make deploy        # docker compose build + up
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Built with Telos Kitty.
+MIT — see [LICENSE](LICENSE).
