@@ -34,6 +34,54 @@
       ],
       "requiresDocker": true,
       "tier": "cheap"
+    },
+    {
+      "name": "pubsub-round-trip",
+      "mode": "exec",
+      "command": "npx ts-node scripts/demo/pubsub.ts",
+      "dependsOn": [
+        "src/**",
+        "client/**",
+        "scripts/demo/**"
+      ],
+      "requiresDocker": true,
+      "tier": "cheap"
+    },
+    {
+      "name": "auth-reject-4001",
+      "mode": "exec",
+      "command": "npx ts-node scripts/demo/auth-reject.ts",
+      "dependsOn": [
+        "src/**",
+        "client/**",
+        "scripts/demo/**"
+      ],
+      "requiresDocker": true,
+      "tier": "cheap"
+    },
+    {
+      "name": "rate-limit-4002",
+      "mode": "exec",
+      "command": "npx ts-node scripts/demo/rate-limit.ts",
+      "dependsOn": [
+        "src/**",
+        "client/**",
+        "scripts/demo/**"
+      ],
+      "requiresDocker": true,
+      "tier": "cheap"
+    },
+    {
+      "name": "client-reconnect-backoff",
+      "mode": "exec",
+      "command": "npx ts-node scripts/demo/reconnect.ts",
+      "dependsOn": [
+        "src/**",
+        "client/**",
+        "scripts/demo/**"
+      ],
+      "requiresDocker": true,
+      "tier": "cheap"
     }
   ]
 }
