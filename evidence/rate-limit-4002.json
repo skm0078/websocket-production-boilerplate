@@ -2,9 +2,9 @@
   "name": "rate-limit-4002",
   "command": "npx ts-node scripts/demo/rate-limit.ts",
   "exitCode": 0,
-  "durationMs": 4714,
-  "capturedAt": "2026-08-21T19:19:08.638Z",
-  "gitSha": "e66fd4f",
+  "durationMs": 3074,
+  "capturedAt": "2026-08-21T20:48:57.920Z",
+  "gitSha": "80dfa26",
   "platform": "win32/x64",
   "dependsOn": [
     "src/**",
