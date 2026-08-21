@@ -58,20 +58,27 @@ CI re-checks freshness on every push via `.github/workflows/evidence.yml`. If a
 Captures needing Docker are skipped there and stay marked `captured-locally` in
 both the manifest and the footer.
 
-## Still to capture
+## All behaviours captured
 
-Four behaviours are not yet evidenced, because the honest version of each is a
-real client script rather than a screenshot of someone typing into `wscat`:
+| Evidence | What it proves |
+|---|---|
+| `evidence/tests-passing.png` | the suite passes, with the real count and timing |
+| `evidence/typecheck-passing.png` | strict TypeScript compiles clean |
+| `evidence/docker-compose-up.png` | app and Redis actually start; `ps` shows Redis loopback-bound |
+| `evidence/pubsub-round-trip.png` | a publish reaches a **separate** subscriber, so fan-out works |
+| `evidence/auth-reject-4001.png` | an invalid token is closed with 4001 |
+| `evidence/rate-limit-4002.png` | flooding past 30 msg/s is closed with 4002 |
+| `evidence/client-reconnect-backoff.png` | the shipped client reconnects through a real container restart |
 
-| # | Behaviour | Status |
-|---|---|---|
-| 06 | publish/subscribe round-trip | [ ] |
-| 07 | reconnect after server restart, real backoff timings | [ ] |
-| 08 | flood -> `4002` close | [ ] |
-| 09 | bad token -> `4001` close | [ ] |
+The last four run real clients under `scripts/demo/`, not screenshots of someone
+typing. Each exits non-zero if the behaviour does not occur, so they double as
+integration checks.
 
-Each becomes a small script under `scripts/` that drives the behaviour and
-prints a transcript, captured as an ordinary command. That is stronger evidence
-than a screenshot, and it doubles as a runnable integration check.
+**The backoff one is worth looking at twice.** The delays it prints vary run to
+run - `905ms, 2212ms, 4214ms` on one, `891ms, 1810ms, 3751ms, 8425ms` on
+another - because the client applies +-15% jitter. The fabricated version this
+replaced claimed a tidy "1s, 2s, 4s", which jitter can never produce. That
+variance is the signature of a real measurement.
 
-Until those exist, the blog does not claim them.
+**To check any of them:** open the manifest beside it, read the `command`, run
+it yourself.

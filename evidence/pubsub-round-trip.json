@@ -1,0 +1,18 @@
+{
+  "name": "pubsub-round-trip",
+  "command": "npx ts-node scripts/demo/pubsub.ts",
+  "exitCode": 0,
+  "durationMs": 3288,
+  "capturedAt": "2026-08-21T19:18:59.542Z",
+  "gitSha": "e66fd4f",
+  "platform": "win32/x64",
+  "dependsOn": [
+    "src/**",
+    "client/**",
+    "scripts/demo/**"
+  ],
+  "tier": "cheap",
+  "verifiedInCI": false,
+  "toolVersion": "0.1.0",
+  "rawOutput": "\u001b[36m$ demo: publish reaches a subscriber in the same room\u001b[0m\n\n  \u001b[2m*\u001b[0m subscriber connected\n  \u001b[2m>\u001b[0m subscribe room=auction-1 id=m-1\n  \u001b[33m<\u001b[0m ack id=ack-1787339939482-yakm4xs7 - subscriber joined auction-1\n  \u001b[2m*\u001b[0m publisher connected\n  \u001b[2m>\u001b[0m subscribe room=auction-1 id=m-2\n  \u001b[33m<\u001b[0m ack id=ack-1787339939486-64xm8ylw - publisher joined auction-1\n  \u001b[2m>\u001b[0m publish room=auction-1 id=m-3\n  \u001b[33m<\u001b[0m publish room=auction-1 payload={\"bid\":250}\n\n\u001b[32mPASS\u001b[0m the published payload reached a separate subscriber in auction-1\n"
+}
